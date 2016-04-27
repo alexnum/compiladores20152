@@ -44,7 +44,34 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDataTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cEntityParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//Type:
+		/// * Faltou...
+		// * 
+		//	 * ";"					{ return ';'; }
+		//	("{"|"<%")				{ return '{'; }
+		//	("}"|"%>")				{ return '}'; }
+		//	","					{ return ','; }
+		//	":"					{ return ':'; }
+		//	"="					{ return '='; }
+		//	"("					{ return '('; }
+		//	")"					{ return ')'; }
+		//	("["|"<:")				{ return '['; }
+		//	("]"|":>")				{ return ']'; }
+		//	"."					{ return '.'; }
+		//	"&"					{ return '&'; }
+		//	"!"					{ return '!'; }
+		//	"~"					{ return '~'; }
+		//	"-"					{ return '-'; }
+		//	"+"					{ return '+'; }
+		//	"*"					{ return '*'; }
+		//	"/"					{ return '/'; }
+		//	"%"					{ return '%'; }
+		//	"<"					{ return '<'; }
+		//	">"					{ return '>'; }
+		//	"^"					{ return '^'; }
+		//	"|"					{ return '|'; }
+		//	"?"					{ return '?'; }
+		// * 
+		// * / Type:
 		//	DataType | Entity;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -192,15 +219,86 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	private final TerminalRule tNZ;
 	private final TerminalRule tL;
 	private final TerminalRule tA;
-	private final TerminalRule tF;
+	private final TerminalRule tH;
 	private final TerminalRule tHP;
 	private final TerminalRule tE;
 	private final TerminalRule tP;
 	private final TerminalRule tFS;
+	private final TerminalRule tES;
 	private final TerminalRule tIS;
 	private final TerminalRule tCP;
 	private final TerminalRule tSP;
 	private final TerminalRule tWS;
+	private final TerminalRule tAUTO;
+	private final TerminalRule tBREAK;
+	private final TerminalRule tCASE;
+	private final TerminalRule tCHAR;
+	private final TerminalRule tCONST;
+	private final TerminalRule tCONTINUE;
+	private final TerminalRule tDEFAULT;
+	private final TerminalRule tDO;
+	private final TerminalRule tDOUBLE;
+	private final TerminalRule tELSE;
+	private final TerminalRule tENUM;
+	private final TerminalRule tEXTERN;
+	private final TerminalRule tFLOAT;
+	private final TerminalRule tFOR;
+	private final TerminalRule tGOTO;
+	private final TerminalRule tIF;
+	private final TerminalRule tINLINE;
+	private final TerminalRule tINTZ;
+	private final TerminalRule tLONG;
+	private final TerminalRule tREGISTER;
+	private final TerminalRule tRESTRICT;
+	private final TerminalRule tRETURN;
+	private final TerminalRule tSHORT;
+	private final TerminalRule tSIGNED;
+	private final TerminalRule tSIZEOF;
+	private final TerminalRule tSTATIC;
+	private final TerminalRule tSTRUCT;
+	private final TerminalRule tSWITCH;
+	private final TerminalRule tTYPEDEF;
+	private final TerminalRule tUNION;
+	private final TerminalRule tUNSIGNED;
+	private final TerminalRule tVOID;
+	private final TerminalRule tVOLATILE;
+	private final TerminalRule tWHILE;
+	private final TerminalRule tALIGNAS;
+	private final TerminalRule tALIGNOF;
+	private final TerminalRule tATOMIC;
+	private final TerminalRule tBOOL;
+	private final TerminalRule tCOMPLEX;
+	private final TerminalRule tGENERIC;
+	private final TerminalRule tIMAGINARY;
+	private final TerminalRule tNORETURN;
+	private final TerminalRule tSTATIC_ASSERT;
+	private final TerminalRule tTHREAD_LOCAL;
+	private final TerminalRule tFUNC_NAME;
+	private final TerminalRule tI_CONSTANT;
+	private final TerminalRule tF_CONSTANT;
+	private final TerminalRule tSTRING_LITERAL;
+	private final TerminalRule tELLIPSIS;
+	private final TerminalRule tRIGHT_ASSIGN;
+	private final TerminalRule tLEFT_ASSIGN;
+	private final TerminalRule tADD_ASSIGN;
+	private final TerminalRule tSUB_ASSIGN;
+	private final TerminalRule tMUL_ASSIGN;
+	private final TerminalRule tDIV_ASSIGN;
+	private final TerminalRule tMOD_ASSIGN;
+	private final TerminalRule tAND_ASSIGN;
+	private final TerminalRule tXOR_ASSIGN;
+	private final TerminalRule tOR_ASSIGN;
+	private final TerminalRule tRIGHT_OP;
+	private final TerminalRule tLEFT_OP;
+	private final TerminalRule tINC_OP;
+	private final TerminalRule tDEC_OP;
+	private final TerminalRule tPTR_OP;
+	private final TerminalRule tAND_OP;
+	private final TerminalRule tOR_OP;
+	private final TerminalRule tLE_OP;
+	private final TerminalRule tGE_OP;
+	private final TerminalRule tEQ_OP;
+	private final TerminalRule tNE_OP;
 	private final TypeElements pType;
 	private final DataTypeElements pDataType;
 	private final EntityElements pEntity;
@@ -221,15 +319,86 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.tNZ = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.NZ");
 		this.tL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.L");
 		this.tA = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.A");
-		this.tF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.F");
+		this.tH = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.H");
 		this.tHP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.HP");
 		this.tE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.E");
 		this.tP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.P");
 		this.tFS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.FS");
+		this.tES = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.ES");
 		this.tIS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.IS");
 		this.tCP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.CP");
 		this.tSP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.SP");
 		this.tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.WS");
+		this.tAUTO = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.AUTO");
+		this.tBREAK = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.BREAK");
+		this.tCASE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.CASE");
+		this.tCHAR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.CHAR");
+		this.tCONST = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.CONST");
+		this.tCONTINUE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.CONTINUE");
+		this.tDEFAULT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.DEFAULT");
+		this.tDO = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.DO");
+		this.tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.DOUBLE");
+		this.tELSE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.ELSE");
+		this.tENUM = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.ENUM");
+		this.tEXTERN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.EXTERN");
+		this.tFLOAT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.FLOAT");
+		this.tFOR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.FOR");
+		this.tGOTO = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.GOTO");
+		this.tIF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.IF");
+		this.tINLINE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.INLINE");
+		this.tINTZ = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.INTZ");
+		this.tLONG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.LONG");
+		this.tREGISTER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.REGISTER");
+		this.tRESTRICT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.RESTRICT");
+		this.tRETURN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.RETURN");
+		this.tSHORT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.SHORT");
+		this.tSIGNED = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.SIGNED");
+		this.tSIZEOF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.SIZEOF");
+		this.tSTATIC = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.STATIC");
+		this.tSTRUCT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.STRUCT");
+		this.tSWITCH = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.SWITCH");
+		this.tTYPEDEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.TYPEDEF");
+		this.tUNION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.UNION");
+		this.tUNSIGNED = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.UNSIGNED");
+		this.tVOID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.VOID");
+		this.tVOLATILE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.VOLATILE");
+		this.tWHILE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.WHILE");
+		this.tALIGNAS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.ALIGNAS");
+		this.tALIGNOF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.ALIGNOF");
+		this.tATOMIC = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.ATOMIC");
+		this.tBOOL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.BOOL");
+		this.tCOMPLEX = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.COMPLEX");
+		this.tGENERIC = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.GENERIC");
+		this.tIMAGINARY = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.IMAGINARY");
+		this.tNORETURN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.NORETURN");
+		this.tSTATIC_ASSERT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.STATIC_ASSERT");
+		this.tTHREAD_LOCAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.THREAD_LOCAL");
+		this.tFUNC_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.FUNC_NAME");
+		this.tI_CONSTANT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.I_CONSTANT");
+		this.tF_CONSTANT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.F_CONSTANT");
+		this.tSTRING_LITERAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.STRING_LITERAL");
+		this.tELLIPSIS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.ELLIPSIS");
+		this.tRIGHT_ASSIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.RIGHT_ASSIGN");
+		this.tLEFT_ASSIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.LEFT_ASSIGN");
+		this.tADD_ASSIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.ADD_ASSIGN");
+		this.tSUB_ASSIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.SUB_ASSIGN");
+		this.tMUL_ASSIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.MUL_ASSIGN");
+		this.tDIV_ASSIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.DIV_ASSIGN");
+		this.tMOD_ASSIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.MOD_ASSIGN");
+		this.tAND_ASSIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.AND_ASSIGN");
+		this.tXOR_ASSIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.XOR_ASSIGN");
+		this.tOR_ASSIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.OR_ASSIGN");
+		this.tRIGHT_OP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.RIGHT_OP");
+		this.tLEFT_OP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.LEFT_OP");
+		this.tINC_OP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.INC_OP");
+		this.tDEC_OP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.DEC_OP");
+		this.tPTR_OP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.PTR_OP");
+		this.tAND_OP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.AND_OP");
+		this.tOR_OP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.OR_OP");
+		this.tLE_OP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.LE_OP");
+		this.tGE_OP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.GE_OP");
+		this.tEQ_OP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.EQ_OP");
+		this.tNE_OP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.NE_OP");
 		this.pType = new TypeElements();
 		this.pDataType = new DataTypeElements();
 		this.pEntity = new EntityElements();
@@ -292,21 +461,21 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal L:
-	//	'a'..'z' 'A'..'Z' '_';
+	//	'a'..'z' | 'A'..'Z' | '_';
 	public TerminalRule getLRule() {
 		return tL;
 	}
 	
 	//terminal A:
-	//	'a'..'z' 'A'..'Z' '_' '0' '..' '9';
+	//	'a'..'z' | 'A'..'Z' | '_' | '0' '..' '9';
 	public TerminalRule getARule() {
 		return tA;
 	}
 	
-	//terminal F:
-	//	'a'..'f' 'A'..'F' '0' '..' '9';
-	public TerminalRule getFRule() {
-		return tF;
+	//terminal H:
+	//	'a'..'f' | 'A'..'F' | '0' '..' '9';
+	public TerminalRule getHRule() {
+		return tH;
 	}
 	
 	//terminal HP:
@@ -316,7 +485,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal E:
-	//	('E' | 'e') ('+' | '-')? '{' D '}' '+';
+	//	('E' | 'e') ('+' | '-')? D '+';
 	public TerminalRule getERule() {
 		return tE;
 	}
@@ -328,19 +497,25 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal FS:
-	//	'f' | F | 'l' | 'L';
+	//	'f' | 'F' | 'l' | 'L';
 	public TerminalRule getFSRule() {
 		return tFS;
 	}
 	
+	//terminal ES:
+	//	A;
+	public TerminalRule getESRule() {
+		return tES;
+	}
+	
 	//terminal IS:
-	//	('u' | 'U') ('l' | L | 'l' 'l' | L L)? | ('l' | L | 'l' 'l' | L L) ('u' | 'U')?;
+	//	('u' | 'U') ('l' | 'L' | 'l' 'l' | 'L' 'L')? | ('l' | 'L' | 'l' 'l' | 'L' 'L') ('u' | 'U')?;
 	public TerminalRule getISRule() {
 		return tIS;
 	}
 	
 	//terminal CP:
-	//	'u' | 'U' | L;
+	//	'u' | 'U' | 'L';
 	public TerminalRule getCPRule() {
 		return tCP;
 	}
@@ -357,7 +532,456 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		return tWS;
 	}
 	
-	//Type:
+	//terminal AUTO:
+	//	"auto";
+	public TerminalRule getAUTORule() {
+		return tAUTO;
+	}
+	
+	//terminal BREAK:
+	//	"break";
+	public TerminalRule getBREAKRule() {
+		return tBREAK;
+	}
+	
+	//terminal CASE:
+	//	"case";
+	public TerminalRule getCASERule() {
+		return tCASE;
+	}
+	
+	//terminal CHAR:
+	//	"char";
+	public TerminalRule getCHARRule() {
+		return tCHAR;
+	}
+	
+	//terminal CONST:
+	//	"const";
+	public TerminalRule getCONSTRule() {
+		return tCONST;
+	}
+	
+	//terminal CONTINUE:
+	//	"continue";
+	public TerminalRule getCONTINUERule() {
+		return tCONTINUE;
+	}
+	
+	//terminal DEFAULT:
+	//	"default";
+	public TerminalRule getDEFAULTRule() {
+		return tDEFAULT;
+	}
+	
+	//terminal DO:
+	//	"do";
+	public TerminalRule getDORule() {
+		return tDO;
+	}
+	
+	//terminal DOUBLE:
+	//	"double";
+	public TerminalRule getDOUBLERule() {
+		return tDOUBLE;
+	}
+	
+	//terminal ELSE:
+	//	"else";
+	public TerminalRule getELSERule() {
+		return tELSE;
+	}
+	
+	//terminal ENUM:
+	//	"enum";
+	public TerminalRule getENUMRule() {
+		return tENUM;
+	}
+	
+	//terminal EXTERN:
+	//	"extern";
+	public TerminalRule getEXTERNRule() {
+		return tEXTERN;
+	}
+	
+	//terminal FLOAT:
+	//	"float";
+	public TerminalRule getFLOATRule() {
+		return tFLOAT;
+	}
+	
+	//terminal FOR:
+	//	"for";
+	public TerminalRule getFORRule() {
+		return tFOR;
+	}
+	
+	//terminal GOTO:
+	//	"goto";
+	public TerminalRule getGOTORule() {
+		return tGOTO;
+	}
+	
+	//terminal IF:
+	//	"if";
+	public TerminalRule getIFRule() {
+		return tIF;
+	}
+	
+	//terminal INLINE:
+	//	"inline";
+	public TerminalRule getINLINERule() {
+		return tINLINE;
+	}
+	
+	//terminal INTZ:
+	//	"int";
+	public TerminalRule getINTZRule() {
+		return tINTZ;
+	}
+	
+	//terminal LONG:
+	//	"long";
+	public TerminalRule getLONGRule() {
+		return tLONG;
+	}
+	
+	//terminal REGISTER:
+	//	"register";
+	public TerminalRule getREGISTERRule() {
+		return tREGISTER;
+	}
+	
+	//terminal RESTRICT:
+	//	"restrict";
+	public TerminalRule getRESTRICTRule() {
+		return tRESTRICT;
+	}
+	
+	//terminal RETURN:
+	//	"return";
+	public TerminalRule getRETURNRule() {
+		return tRETURN;
+	}
+	
+	//terminal SHORT:
+	//	"short";
+	public TerminalRule getSHORTRule() {
+		return tSHORT;
+	}
+	
+	//terminal SIGNED:
+	//	"signed";
+	public TerminalRule getSIGNEDRule() {
+		return tSIGNED;
+	}
+	
+	//terminal SIZEOF:
+	//	"sizeof";
+	public TerminalRule getSIZEOFRule() {
+		return tSIZEOF;
+	}
+	
+	//terminal STATIC:
+	//	"static";
+	public TerminalRule getSTATICRule() {
+		return tSTATIC;
+	}
+	
+	//terminal STRUCT:
+	//	"struct";
+	public TerminalRule getSTRUCTRule() {
+		return tSTRUCT;
+	}
+	
+	//terminal SWITCH:
+	//	"switch";
+	public TerminalRule getSWITCHRule() {
+		return tSWITCH;
+	}
+	
+	//terminal TYPEDEF:
+	//	"typedef";
+	public TerminalRule getTYPEDEFRule() {
+		return tTYPEDEF;
+	}
+	
+	//terminal UNION:
+	//	"union";
+	public TerminalRule getUNIONRule() {
+		return tUNION;
+	}
+	
+	//terminal UNSIGNED:
+	//	"unsigned";
+	public TerminalRule getUNSIGNEDRule() {
+		return tUNSIGNED;
+	}
+	
+	//terminal VOID:
+	//	"void";
+	public TerminalRule getVOIDRule() {
+		return tVOID;
+	}
+	
+	//terminal VOLATILE:
+	//	"volatile";
+	public TerminalRule getVOLATILERule() {
+		return tVOLATILE;
+	}
+	
+	//terminal WHILE:
+	//	"while";
+	public TerminalRule getWHILERule() {
+		return tWHILE;
+	}
+	
+	//terminal ALIGNAS:
+	//	"_Alignas";
+	public TerminalRule getALIGNASRule() {
+		return tALIGNAS;
+	}
+	
+	//terminal ALIGNOF:
+	//	"_Alignof";
+	public TerminalRule getALIGNOFRule() {
+		return tALIGNOF;
+	}
+	
+	//terminal ATOMIC:
+	//	"_Atomic";
+	public TerminalRule getATOMICRule() {
+		return tATOMIC;
+	}
+	
+	//terminal BOOL:
+	//	"_Bool";
+	public TerminalRule getBOOLRule() {
+		return tBOOL;
+	}
+	
+	//terminal COMPLEX:
+	//	"_Complex";
+	public TerminalRule getCOMPLEXRule() {
+		return tCOMPLEX;
+	}
+	
+	//terminal GENERIC:
+	//	"_Generic";
+	public TerminalRule getGENERICRule() {
+		return tGENERIC;
+	}
+	
+	//terminal IMAGINARY:
+	//	"_Imaginary";
+	public TerminalRule getIMAGINARYRule() {
+		return tIMAGINARY;
+	}
+	
+	//terminal NORETURN:
+	//	"_Noreturn";
+	public TerminalRule getNORETURNRule() {
+		return tNORETURN;
+	}
+	
+	//terminal STATIC_ASSERT:
+	//	"_Static_assert";
+	public TerminalRule getSTATIC_ASSERTRule() {
+		return tSTATIC_ASSERT;
+	}
+	
+	//terminal THREAD_LOCAL:
+	//	"_Thread_local";
+	public TerminalRule getTHREAD_LOCALRule() {
+		return tTHREAD_LOCAL;
+	}
+	
+	//terminal FUNC_NAME:
+	//	"__func__";
+	public TerminalRule getFUNC_NAMERule() {
+		return tFUNC_NAME;
+	}
+	
+	//terminal I_CONSTANT:
+	//	HP H '+' IS? | NZ D '*' IS? |
+	//	"0" O '*' IS? | CP? "'" (('^' | '\'' | '\\' | '\n') | ES)+ "'";
+	public TerminalRule getI_CONSTANTRule() {
+		return tI_CONSTANT;
+	}
+	
+	//terminal F_CONSTANT:
+	//	D '+' E FS? | D '*' "." D '+' E? FS? | D '+' "." E? FS? | HP H '+' P FS?
+	//	HP H '*' "." H '+' P FS? | HP H '+' "." P FS?;
+	public TerminalRule getF_CONSTANTRule() {
+		return tF_CONSTANT;
+	}
+	
+	//terminal STRING_LITERAL:
+	//	SP? '"' (('^' | '\'' | '\\' | '\n') | ES)* '"' WS*+;
+	public TerminalRule getSTRING_LITERALRule() {
+		return tSTRING_LITERAL;
+	}
+	
+	//terminal ELLIPSIS:
+	//	"...";
+	public TerminalRule getELLIPSISRule() {
+		return tELLIPSIS;
+	}
+	
+	//terminal RIGHT_ASSIGN:
+	//	">>=";
+	public TerminalRule getRIGHT_ASSIGNRule() {
+		return tRIGHT_ASSIGN;
+	}
+	
+	//terminal LEFT_ASSIGN:
+	//	"<<=";
+	public TerminalRule getLEFT_ASSIGNRule() {
+		return tLEFT_ASSIGN;
+	}
+	
+	//terminal ADD_ASSIGN:
+	//	"+=";
+	public TerminalRule getADD_ASSIGNRule() {
+		return tADD_ASSIGN;
+	}
+	
+	//terminal SUB_ASSIGN:
+	//	"-=";
+	public TerminalRule getSUB_ASSIGNRule() {
+		return tSUB_ASSIGN;
+	}
+	
+	//terminal MUL_ASSIGN:
+	//	"*=";
+	public TerminalRule getMUL_ASSIGNRule() {
+		return tMUL_ASSIGN;
+	}
+	
+	//terminal DIV_ASSIGN:
+	//	"/=";
+	public TerminalRule getDIV_ASSIGNRule() {
+		return tDIV_ASSIGN;
+	}
+	
+	//terminal MOD_ASSIGN:
+	//	"%=";
+	public TerminalRule getMOD_ASSIGNRule() {
+		return tMOD_ASSIGN;
+	}
+	
+	//terminal AND_ASSIGN:
+	//	"&=";
+	public TerminalRule getAND_ASSIGNRule() {
+		return tAND_ASSIGN;
+	}
+	
+	//terminal XOR_ASSIGN:
+	//	"^=";
+	public TerminalRule getXOR_ASSIGNRule() {
+		return tXOR_ASSIGN;
+	}
+	
+	//terminal OR_ASSIGN:
+	//	"|=";
+	public TerminalRule getOR_ASSIGNRule() {
+		return tOR_ASSIGN;
+	}
+	
+	//terminal RIGHT_OP:
+	//	">>";
+	public TerminalRule getRIGHT_OPRule() {
+		return tRIGHT_OP;
+	}
+	
+	//terminal LEFT_OP:
+	//	"<<";
+	public TerminalRule getLEFT_OPRule() {
+		return tLEFT_OP;
+	}
+	
+	//terminal INC_OP:
+	//	"++";
+	public TerminalRule getINC_OPRule() {
+		return tINC_OP;
+	}
+	
+	//terminal DEC_OP:
+	//	"--";
+	public TerminalRule getDEC_OPRule() {
+		return tDEC_OP;
+	}
+	
+	//terminal PTR_OP:
+	//	"->";
+	public TerminalRule getPTR_OPRule() {
+		return tPTR_OP;
+	}
+	
+	//terminal AND_OP:
+	//	"&&";
+	public TerminalRule getAND_OPRule() {
+		return tAND_OP;
+	}
+	
+	//terminal OR_OP:
+	//	"||";
+	public TerminalRule getOR_OPRule() {
+		return tOR_OP;
+	}
+	
+	//terminal LE_OP:
+	//	"<=";
+	public TerminalRule getLE_OPRule() {
+		return tLE_OP;
+	}
+	
+	//terminal GE_OP:
+	//	">=";
+	public TerminalRule getGE_OPRule() {
+		return tGE_OP;
+	}
+	
+	//terminal EQ_OP:
+	//	"==";
+	public TerminalRule getEQ_OPRule() {
+		return tEQ_OP;
+	}
+	
+	//terminal NE_OP:
+	//	"!=";
+	public TerminalRule getNE_OPRule() {
+		return tNE_OP;
+	}
+	
+	/// * Faltou...
+	// * 
+	//	 * ";"					{ return ';'; }
+	//	("{"|"<%")				{ return '{'; }
+	//	("}"|"%>")				{ return '}'; }
+	//	","					{ return ','; }
+	//	":"					{ return ':'; }
+	//	"="					{ return '='; }
+	//	"("					{ return '('; }
+	//	")"					{ return ')'; }
+	//	("["|"<:")				{ return '['; }
+	//	("]"|":>")				{ return ']'; }
+	//	"."					{ return '.'; }
+	//	"&"					{ return '&'; }
+	//	"!"					{ return '!'; }
+	//	"~"					{ return '~'; }
+	//	"-"					{ return '-'; }
+	//	"+"					{ return '+'; }
+	//	"*"					{ return '*'; }
+	//	"/"					{ return '/'; }
+	//	"%"					{ return '%'; }
+	//	"<"					{ return '<'; }
+	//	">"					{ return '>'; }
+	//	"^"					{ return '^'; }
+	//	"|"					{ return '|'; }
+	//	"?"					{ return '?'; }
+	// * 
+	// * / Type:
 	//	DataType | Entity;
 	public TypeElements getTypeAccess() {
 		return pType;

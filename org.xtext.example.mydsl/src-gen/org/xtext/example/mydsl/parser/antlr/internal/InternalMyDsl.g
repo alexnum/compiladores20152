@@ -328,33 +328,175 @@ ruleFeature returns [EObject current=null]
 	)
 ;
 
-RULE_O : '0'..'7';
+fragment RULE_O : '0'..'7';
 
 fragment RULE_D : '0'..'9';
 
-RULE_NZ : '1'..'9';
+fragment RULE_NZ : '1'..'9';
 
-fragment RULE_L : 'a'..'z' 'A'..'Z' '_';
+RULE_L : ('a'..'z'|'A'..'Z'|'_');
 
-RULE_A : 'a'..'z' 'A'..'Z' '_' '0' '..' '9';
+fragment RULE_A : ('a'..'z'|'A'..'Z'|'_'|'0' '..' '9');
 
-fragment RULE_F : 'a'..'f' 'A'..'F' '0' '..' '9';
+fragment RULE_H : ('a'..'f'|'A'..'F'|'0' '..' '9');
 
-RULE_HP : '0' ('x'|'X');
+fragment RULE_HP : '0' ('x'|'X');
 
-RULE_E : ('E'|'e') ('+'|'-')? '{' RULE_D '}' '+';
+fragment RULE_E : ('E'|'e') ('+'|'-')? RULE_D '+';
 
-RULE_P : ('P'|'p') ('+'|'-')? '{' RULE_D '}' '+';
+fragment RULE_P : ('P'|'p') ('+'|'-')? '{' RULE_D '}' '+';
 
-RULE_FS : ('f'|RULE_F|'l'|'L');
+fragment RULE_FS : ('f'|'F'|'l'|'L');
 
-RULE_IS : (('u'|'U') ('l'|RULE_L|'l' 'l'|RULE_L RULE_L)?|('l'|RULE_L|'l' 'l'|RULE_L RULE_L) ('u'|'U')?);
+fragment RULE_ES : RULE_A;
 
-RULE_CP : ('u'|'U'|RULE_L);
+fragment RULE_IS : (('u'|'U') ('l'|'L'|'l' 'l'|'L' 'L')?|('l'|'L'|'l' 'l'|'L' 'L') ('u'|'U')?);
 
-RULE_SP : ('u' '8'|'u'|'U'|'L');
+fragment RULE_CP : ('u'|'U'|'L');
+
+fragment RULE_SP : ('u' '8'|'u'|'U'|'L');
 
 RULE_WS : (' '|'\t'|'\r'|'\n'|'\f')+;
+
+RULE_AUTO : 'auto';
+
+RULE_BREAK : 'break';
+
+RULE_CASE : 'case';
+
+RULE_CHAR : 'char';
+
+RULE_CONST : 'const';
+
+RULE_CONTINUE : 'continue';
+
+RULE_DEFAULT : 'default';
+
+RULE_DO : 'do';
+
+RULE_DOUBLE : 'double';
+
+RULE_ELSE : 'else';
+
+RULE_ENUM : 'enum';
+
+RULE_EXTERN : 'extern';
+
+RULE_FLOAT : 'float';
+
+RULE_FOR : 'for';
+
+RULE_GOTO : 'goto';
+
+RULE_IF : 'if';
+
+RULE_INLINE : 'inline';
+
+RULE_INTZ : 'int';
+
+RULE_LONG : 'long';
+
+RULE_REGISTER : 'register';
+
+RULE_RESTRICT : 'restrict';
+
+RULE_RETURN : 'return';
+
+RULE_SHORT : 'short';
+
+RULE_SIGNED : 'signed';
+
+RULE_SIZEOF : 'sizeof';
+
+RULE_STATIC : 'static';
+
+RULE_STRUCT : 'struct';
+
+RULE_SWITCH : 'switch';
+
+RULE_TYPEDEF : 'typedef';
+
+RULE_UNION : 'union';
+
+RULE_UNSIGNED : 'unsigned';
+
+RULE_VOID : 'void';
+
+RULE_VOLATILE : 'volatile';
+
+RULE_WHILE : 'while';
+
+RULE_ALIGNAS : '_Alignas';
+
+RULE_ALIGNOF : '_Alignof';
+
+RULE_ATOMIC : '_Atomic';
+
+RULE_BOOL : '_Bool';
+
+RULE_COMPLEX : '_Complex';
+
+RULE_GENERIC : '_Generic';
+
+RULE_IMAGINARY : '_Imaginary';
+
+RULE_NORETURN : '_Noreturn';
+
+RULE_STATIC_ASSERT : '_Static_assert';
+
+RULE_THREAD_LOCAL : '_Thread_local';
+
+RULE_FUNC_NAME : '__func__';
+
+RULE_I_CONSTANT : (RULE_HP RULE_H '+' RULE_IS?|RULE_NZ RULE_D '*' RULE_IS?|'0' RULE_O '*' RULE_IS?|RULE_CP? '\'' (('^'|'\''|'\\'|'\n')|RULE_ES)+ '\'');
+
+RULE_F_CONSTANT : (RULE_D '+' RULE_E RULE_FS?|RULE_D '*' '.' RULE_D '+' RULE_E? RULE_FS?|RULE_D '+' '.' RULE_E? RULE_FS?|RULE_HP RULE_H '+' RULE_P RULE_FS? RULE_HP RULE_H '*' '.' RULE_H '+' RULE_P RULE_FS?|RULE_HP RULE_H '+' '.' RULE_P RULE_FS?);
+
+RULE_STRING_LITERAL : (RULE_SP? '"' (('^'|'\''|'\\'|'\n')|RULE_ES)* '"' RULE_WS*)+;
+
+RULE_ELLIPSIS : '...';
+
+RULE_RIGHT_ASSIGN : '>>=';
+
+RULE_LEFT_ASSIGN : '<<=';
+
+RULE_ADD_ASSIGN : '+=';
+
+RULE_SUB_ASSIGN : '-=';
+
+RULE_MUL_ASSIGN : '*=';
+
+RULE_DIV_ASSIGN : '/=';
+
+RULE_MOD_ASSIGN : '%=';
+
+RULE_AND_ASSIGN : '&=';
+
+RULE_XOR_ASSIGN : '^=';
+
+RULE_OR_ASSIGN : '|=';
+
+RULE_RIGHT_OP : '>>';
+
+RULE_LEFT_OP : '<<';
+
+RULE_INC_OP : '++';
+
+RULE_DEC_OP : '--';
+
+RULE_PTR_OP : '->';
+
+RULE_AND_OP : '&&';
+
+RULE_OR_OP : '||';
+
+RULE_LE_OP : '<=';
+
+RULE_GE_OP : '>=';
+
+RULE_EQ_OP : '==';
+
+RULE_NE_OP : '!=';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

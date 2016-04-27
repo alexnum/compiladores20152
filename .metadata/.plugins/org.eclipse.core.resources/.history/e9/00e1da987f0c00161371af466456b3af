@@ -1,0 +1,171 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+Domainmodel :
+    (elements+=Type)*;
+
+
+terminal O: ('0'..'7');
+terminal D: ('0'..'9');
+terminal NZ: ('1'..'9');
+terminal L: ('a'..'z' | 'A'..'Z' | '_');
+terminal A: ('a'..'z' | 'A'..'Z' | '_' | '0''..''9');
+terminal H: ('a'..'f' | 'A'..'F' | '0''..''9');
+terminal HP: ('0'( 'x'| 'X'));
+terminal E: ('E' | 'e') ('+' | '-')? D '+';
+terminal P: ('P' | 'p') ('+' | '-')? '{'D'}''+';
+terminal FS: 'f'| 'F' | 'l' | 'L';
+terminal ES: A; //TODO
+terminal IS: ((('u'|'U')('l'| 'L' | 'l''l' | 'L''L')?)|(('l'| 'L' | 'l''l' | 'L' 'L')('u'| 'U')?));
+terminal CP: ('u'| 'U' | 'L');
+terminal SP: ('u''8' | 'u' | 'U' | 'L');
+//Algum mito faz esse ES??
+terminal WS : (' '|'\t'|'\r'|'\n' | '\f')+;
+
+terminal AUTO: "auto";
+terminal BREAK: "break";
+terminal CASE: "case";
+terminal CHAR: "char";
+terminal CONST: "const";
+terminal CONTINUE: "continue";
+terminal DEFAULT: "default";
+terminal DO: "do";
+terminal DOUBLE: "double";
+terminal ELSE: "else";
+terminal ENUM: "enum";
+terminal EXTERN: "extern";
+terminal FLOAT: "float";
+terminal FOR: "for";
+terminal GOTO: "goto";
+terminal IF: "if";
+terminal INLINE: "inline";
+terminal INTZ: "int";
+terminal LONG: "long";
+terminal REGISTER: "register";
+terminal RESTRICT: "restrict";
+terminal RETURN: "return";
+terminal SHORT: "short";
+terminal SIGNED: "signed";
+terminal SIZEOF: "sizeof";
+terminal STATIC: "static";
+terminal STRUCT: "struct";
+terminal SWITCH: "switch";
+terminal TYPEDEF: "typedef";
+terminal UNION: "union";
+terminal IDENTIFIER: "identifier";
+terminal UNSIGNED: "unsigned";
+terminal VOID: "void";
+terminal VOLATILE: "volatile";
+terminal WHILE: "while";
+terminal ALIGNAS: "_Alignas";
+terminal ALIGNOF: "_Alignof";
+terminal ATOMIC: "_Atomic";
+terminal BOOL: "_Bool";
+terminal COMPLEX: "_Complex";
+terminal GENERIC: "_Generic";
+terminal IMAGINARY: "_Imaginary";
+terminal NORETURN: "_Noreturn";
+terminal STATIC_ASSERT: "_Static_assert";
+terminal THREAD_LOCAL: "_Thread_local";
+terminal FUNC_NAME: "__func__";
+
+terminal I_CONSTANT: HP H '+' IS? |
+	NZ D '*' IS? |
+	"0" O '*' IS? |
+	CP? "'" (('^' | '\'' | '\\' | '\n') | ES)+"'"
+;
+
+terminal F_CONSTANT: D '+' E FS? |
+	D '*' "." D '+' E? FS? |
+	D '+' "." E ? FS? |
+	HP H '+' P FS?
+	HP H '*' "." H '+' P FS ? | 
+	HP H '+' "." P FS?
+;
+
+terminal STRING_LITERAL: (SP? '"' (('^' | '\'' | '\\' | '\n') | ES)* '"' WS*)+;
+
+terminal ELLIPSIS: "...";
+terminal RIGHT_ASSIGN: ">>=";
+terminal LEFT_ASSIGN: "<<=";
+terminal ADD_ASSIGN: "+=";
+terminal SUB_ASSIGN: "-=";
+terminal MUL_ASSIGN: "*=";
+terminal DIV_ASSIGN: "/=";
+terminal MOD_ASSIGN: "%=";
+terminal AND_ASSIGN: "&=";
+terminal XOR_ASSIGN: "^=";
+terminal OR_ASSIGN: "|=";
+terminal RIGHT_OP: ">>";
+terminal LEFT_OP: "<<";
+terminal INC_OP: "++";
+terminal DEC_OP: "--";
+terminal PTR_OP: "->";
+terminal AND_OP: "&&";
+terminal OR_OP: "||";
+terminal LE_OP: "<=";
+terminal GE_OP: ">=";
+terminal EQ_OP: "==";
+terminal NE_OP: "!=";
+
+/* Faltou...
+ * 
+	 * ";"					{ return ';'; }
+	("{"|"<%")				{ return '{'; }
+	("}"|"%>")				{ return '}'; }
+	","					{ return ','; }
+	":"					{ return ':'; }
+	"="					{ return '='; }
+	"("					{ return '('; }
+	")"					{ return ')'; }
+	("["|"<:")				{ return '['; }
+	("]"|":>")				{ return ']'; }
+	"."					{ return '.'; }
+	"&"					{ return '&'; }
+	"!"					{ return '!'; }
+	"~"					{ return '~'; }
+	"-"					{ return '-'; }
+	"+"					{ return '+'; }
+	"*"					{ return '*'; }
+	"/"					{ return '/'; }
+	"%"					{ return '%'; }
+	"<"					{ return '<'; }
+	">"					{ return '>'; }
+	"^"					{ return '^'; }
+	"|"					{ return '|'; }
+	"?"					{ return '?'; }
+ * 
+ */
+Type:
+    dataType | Entity;
+  
+dataType:
+    'datatype' name=ID;
+ 
+Entity:
+    'entity' name=ID ('extends' superType=[Entity])? '{'
+        (features+=Feature)*
+    '}';
+ 
+Feature:
+    (many?='many')? name=ID ':' type=[Type];
+    
+primary_expression: 
+	IDENTIFIER
+	| constant
+	| string
+	| '(' expression ')'
+	| generic_selection
+;
+
+constant
+	: I_CONSTANT		/* includes character_constant */
+	| F_CONSTANT
+	| ENUMERATION_CONSTANT	/* after it has been defined as such */
+	;
+	
+	
+enumeration_constant		/* before it has been defined as such */
+	: IDENTIFIER
+	;

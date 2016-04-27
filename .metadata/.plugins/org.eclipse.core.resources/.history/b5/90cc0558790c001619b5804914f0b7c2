@@ -1,0 +1,36 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+Domainmodel :
+    (elements+=Type)*;
+
+
+terminal O: ('0'..'7');
+terminal D: ('0'..'9');
+terminal NZ: ('1'..'9');
+terminal L: ('a'..'z' | 'A'..'Z' | '_');
+terminal A: ('a'..'z' | 'A'..'Z' | '_' | '0''..''9');
+terminal F: ('a'..'f''A'..'F''0''..''9');
+terminal HP: ('0'( 'x'| 'X'));
+terminal E: ('E' | 'e') ('+' | '-')? '{'D'}''+';
+terminal P: ('P' | 'p') ('+' | '-')? '{'D'}''+';
+terminal FS: 'f'| F | 'l' | 'L';
+terminal IS: ((('u'|'U')('l'| L | 'l''l' | L L)?)|(('l'| L | 'l''l' | L L)('u'| 'U')?)); // "Qual L usar?
+terminal CP: ('u'| 'U' | L);
+terminal SP: ('u''8' | 'u' | 'U' | 'L');
+//Algum mito faz esse ES??
+terminal WS : (' '|'\t'|'\r'|'\n' | '\f')+;
+Type:
+    DataType | Entity;
+  
+DataType:
+    'datatype' name=ID;
+ 
+Entity:
+    'entity' name=ID ('extends' superType=[Entity])? '{'
+        (features+=Feature)*
+    '}';
+ 
+Feature:
+    (many?='many')? name=ID ':' type=[Type];

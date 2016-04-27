@@ -22,36 +22,107 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMyDslParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_O", "RULE_D", "RULE_NZ", "RULE_L", "RULE_A", "RULE_F", "RULE_HP", "RULE_E", "RULE_P", "RULE_FS", "RULE_IS", "RULE_CP", "RULE_SP", "RULE_WS", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_ANY_OTHER", "'datatype'", "'entity'", "'{'", "'}'", "'extends'", "':'", "'many'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_O", "RULE_D", "RULE_NZ", "RULE_L", "RULE_A", "RULE_H", "RULE_HP", "RULE_E", "RULE_P", "RULE_FS", "RULE_ES", "RULE_IS", "RULE_CP", "RULE_SP", "RULE_WS", "RULE_AUTO", "RULE_BREAK", "RULE_CASE", "RULE_CHAR", "RULE_CONST", "RULE_CONTINUE", "RULE_DEFAULT", "RULE_DO", "RULE_DOUBLE", "RULE_ELSE", "RULE_ENUM", "RULE_EXTERN", "RULE_FLOAT", "RULE_FOR", "RULE_GOTO", "RULE_IF", "RULE_INLINE", "RULE_INTZ", "RULE_LONG", "RULE_REGISTER", "RULE_RESTRICT", "RULE_RETURN", "RULE_SHORT", "RULE_SIGNED", "RULE_SIZEOF", "RULE_STATIC", "RULE_STRUCT", "RULE_SWITCH", "RULE_TYPEDEF", "RULE_UNION", "RULE_UNSIGNED", "RULE_VOID", "RULE_VOLATILE", "RULE_WHILE", "RULE_ALIGNAS", "RULE_ALIGNOF", "RULE_ATOMIC", "RULE_BOOL", "RULE_COMPLEX", "RULE_GENERIC", "RULE_IMAGINARY", "RULE_NORETURN", "RULE_STATIC_ASSERT", "RULE_THREAD_LOCAL", "RULE_FUNC_NAME", "RULE_I_CONSTANT", "RULE_F_CONSTANT", "RULE_STRING_LITERAL", "RULE_ELLIPSIS", "RULE_RIGHT_ASSIGN", "RULE_LEFT_ASSIGN", "RULE_ADD_ASSIGN", "RULE_SUB_ASSIGN", "RULE_MUL_ASSIGN", "RULE_DIV_ASSIGN", "RULE_MOD_ASSIGN", "RULE_AND_ASSIGN", "RULE_XOR_ASSIGN", "RULE_OR_ASSIGN", "RULE_RIGHT_OP", "RULE_LEFT_OP", "RULE_INC_OP", "RULE_DEC_OP", "RULE_PTR_OP", "RULE_AND_OP", "RULE_OR_OP", "RULE_LE_OP", "RULE_GE_OP", "RULE_EQ_OP", "RULE_NE_OP", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_ANY_OTHER", "'datatype'", "'entity'", "'{'", "'}'", "'extends'", "':'", "'many'"
     };
     public static final int RULE_A=9;
-    public static final int RULE_CP=16;
-    public static final int RULE_STRING=20;
-    public static final int RULE_SL_COMMENT=22;
-    public static final int RULE_IS=15;
-    public static final int RULE_SP=17;
-    public static final int EOF=-1;
-    public static final int T__30=30;
+    public static final int RULE_STRUCT=46;
+    public static final int RULE_DEC_OP=82;
+    public static final int RULE_ATOMIC=56;
+    public static final int RULE_REGISTER=39;
+    public static final int RULE_WHILE=53;
+    public static final int RULE_FUNC_NAME=64;
     public static final int RULE_ID=4;
-    public static final int RULE_WS=18;
-    public static final int RULE_FS=14;
-    public static final int RULE_ANY_OTHER=23;
+    public static final int RULE_RETURN=41;
+    public static final int RULE_INLINE=36;
+    public static final int RULE_SUB_ASSIGN=72;
     public static final int RULE_HP=11;
+    public static final int RULE_AUTO=20;
+    public static final int RULE_INT=90;
+    public static final int RULE_ML_COMMENT=92;
+    public static final int RULE_RESTRICT=40;
+    public static final int RULE_MUL_ASSIGN=73;
+    public static final int RULE_IMAGINARY=60;
+    public static final int RULE_ENUM=30;
+    public static final int RULE_I_CONSTANT=65;
+    public static final int RULE_COMPLEX=58;
+    public static final int RULE_IS=16;
+    public static final int RULE_CONST=24;
+    public static final int RULE_VOLATILE=52;
+    public static final int RULE_DEFAULT=26;
+    public static final int RULE_IF=35;
+    public static final int RULE_ELLIPSIS=68;
+    public static final int RULE_AND_OP=84;
+    public static final int RULE_SIGNED=43;
+    public static final int RULE_LEFT_ASSIGN=70;
+    public static final int RULE_STATIC_ASSERT=62;
+    public static final int RULE_UNSIGNED=50;
+    public static final int RULE_ALIGNAS=54;
+    public static final int RULE_EQ_OP=88;
+    public static final int RULE_STATIC=45;
+    public static final int RULE_LEFT_OP=80;
+    public static final int RULE_CONTINUE=25;
+    public static final int RULE_BOOL=57;
+    public static final int RULE_AND_ASSIGN=76;
     public static final int RULE_O=5;
     public static final int RULE_P=13;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int RULE_NZ=7;
-    public static final int T__28=28;
-    public static final int RULE_INT=19;
-    public static final int T__29=29;
+    public static final int RULE_SWITCH=47;
     public static final int RULE_L=8;
-    public static final int RULE_ML_COMMENT=21;
-    public static final int T__24=24;
-    public static final int T__25=25;
+    public static final int RULE_OR_OP=85;
+    public static final int RULE_FLOAT=32;
+    public static final int RULE_F_CONSTANT=66;
+    public static final int RULE_H=10;
     public static final int RULE_E=12;
-    public static final int RULE_F=10;
     public static final int RULE_D=6;
+    public static final int T__100=100;
+    public static final int RULE_THREAD_LOCAL=63;
+    public static final int T__101=101;
+    public static final int RULE_NORETURN=61;
+    public static final int RULE_CP=17;
+    public static final int RULE_EXTERN=31;
+    public static final int RULE_GE_OP=87;
+    public static final int T__99=99;
+    public static final int RULE_CHAR=23;
+    public static final int RULE_SP=18;
+    public static final int T__95=95;
+    public static final int T__96=96;
+    public static final int T__97=97;
+    public static final int T__98=98;
+    public static final int RULE_MOD_ASSIGN=75;
+    public static final int RULE_SHORT=42;
+    public static final int RULE_CASE=22;
+    public static final int RULE_DO=27;
+    public static final int RULE_XOR_ASSIGN=77;
+    public static final int RULE_INC_OP=81;
+    public static final int RULE_UNION=49;
+    public static final int RULE_ELSE=29;
+    public static final int RULE_TYPEDEF=48;
+    public static final int RULE_OR_ASSIGN=78;
+    public static final int RULE_NE_OP=89;
+    public static final int RULE_ALIGNOF=55;
+    public static final int RULE_PTR_OP=83;
+    public static final int RULE_STRING=91;
+    public static final int RULE_ES=15;
+    public static final int RULE_STRING_LITERAL=67;
+    public static final int RULE_SL_COMMENT=93;
+    public static final int RULE_DOUBLE=28;
+    public static final int RULE_BREAK=21;
+    public static final int RULE_ADD_ASSIGN=71;
+    public static final int RULE_FOR=33;
+    public static final int EOF=-1;
+    public static final int RULE_SIZEOF=44;
+    public static final int RULE_VOID=51;
+    public static final int RULE_GENERIC=59;
+    public static final int RULE_WS=19;
+    public static final int RULE_GOTO=34;
+    public static final int RULE_RIGHT_ASSIGN=69;
+    public static final int RULE_FS=14;
+    public static final int RULE_INTZ=37;
+    public static final int RULE_ANY_OTHER=94;
+    public static final int RULE_DIV_ASSIGN=74;
+    public static final int RULE_RIGHT_OP=79;
+    public static final int RULE_NZ=7;
+    public static final int RULE_LE_OP=86;
+    public static final int RULE_LONG=38;
 
     // delegates
     // delegators
@@ -138,7 +209,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( ((LA1_0>=24 && LA1_0<=25)) ) {
+                if ( ((LA1_0>=95 && LA1_0<=96)) ) {
                     alt1=1;
                 }
 
@@ -502,10 +573,10 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==24) ) {
+            if ( (LA2_0==95) ) {
                 alt2=1;
             }
-            else if ( (LA2_0==25) ) {
+            else if ( (LA2_0==96) ) {
                 alt2=2;
             }
             else {
@@ -622,7 +693,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             // InternalMyDsl.g:216:2: 'datatype'
             {
              before(grammarAccess.getDataTypeAccess().getDatatypeKeyword_0()); 
-            match(input,24,FOLLOW_2); 
+            match(input,95,FOLLOW_2); 
              after(grammarAccess.getDataTypeAccess().getDatatypeKeyword_0()); 
 
             }
@@ -777,7 +848,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             // InternalMyDsl.g:270:2: 'entity'
             {
              before(grammarAccess.getEntityAccess().getEntityKeyword_0()); 
-            match(input,25,FOLLOW_2); 
+            match(input,96,FOLLOW_2); 
              after(grammarAccess.getEntityAccess().getEntityKeyword_0()); 
 
             }
@@ -941,7 +1012,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0==28) ) {
+            if ( (LA3_0==99) ) {
                 alt3=1;
             }
             switch (alt3) {
@@ -1033,7 +1104,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             // InternalMyDsl.g:351:2: '{'
             {
              before(grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_3()); 
-            match(input,26,FOLLOW_2); 
+            match(input,97,FOLLOW_2); 
              after(grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_3()); 
 
             }
@@ -1114,7 +1185,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( (LA4_0==RULE_ID||LA4_0==30) ) {
+                if ( (LA4_0==RULE_ID||LA4_0==101) ) {
                     alt4=1;
                 }
 
@@ -1206,7 +1277,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             // InternalMyDsl.g:404:2: '}'
             {
              before(grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_5()); 
-            match(input,27,FOLLOW_2); 
+            match(input,98,FOLLOW_2); 
              after(grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_5()); 
 
             }
@@ -1281,7 +1352,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             // InternalMyDsl.g:432:2: 'extends'
             {
              before(grammarAccess.getEntityAccess().getExtendsKeyword_2_0()); 
-            match(input,28,FOLLOW_2); 
+            match(input,99,FOLLOW_2); 
              after(grammarAccess.getEntityAccess().getExtendsKeyword_2_0()); 
 
             }
@@ -1440,7 +1511,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             int alt5=2;
             int LA5_0 = input.LA(1);
 
-            if ( (LA5_0==30) ) {
+            if ( (LA5_0==101) ) {
                 alt5=1;
             }
             switch (alt5) {
@@ -1617,7 +1688,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             // InternalMyDsl.g:540:2: ':'
             {
              before(grammarAccess.getFeatureAccess().getColonKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,100,FOLLOW_2); 
              after(grammarAccess.getFeatureAccess().getColonKeyword_2()); 
 
             }
@@ -1939,7 +2010,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             // InternalMyDsl.g:663:4: 'many'
             {
              before(grammarAccess.getFeatureAccess().getManyManyKeyword_0_0()); 
-            match(input,30,FOLLOW_2); 
+            match(input,101,FOLLOW_2); 
              after(grammarAccess.getFeatureAccess().getManyManyKeyword_0_0()); 
 
             }
@@ -2054,12 +2125,12 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000003000002L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000002L,0x0000000180000000L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000014000000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000048000010L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000040000012L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000040000010L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000000L,0x0000000A00000000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000010L,0x0000002400000000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000012L,0x0000002000000000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000010L,0x0000002000000000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000000L,0x0000001000000000L});
 
 }
